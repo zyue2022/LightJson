@@ -1,7 +1,7 @@
 /*
  * @Description  : Json类，保存Json类型，提供对外接口
  * @Date         : 2022-07-19 14:48:31
- * @LastEditTime : 2022-07-20 20:08:04
+ * @LastEditTime : 2022-07-20 22:06:37
  */
 #ifndef JSON_H
 #define JSON_H
@@ -16,6 +16,8 @@
 #include "JsonParser.h"
 
 namespace lightJson {
+/* 外部调用接口，生成json对象 */
+Json JSON_API(const std::string& content, std::string& errMsg);
 
 /* Json对象类型，限定作用域的枚举类型 */
 enum class JsonType { Null, Bool, Number, String, Array, Object };
@@ -23,7 +25,7 @@ enum class JsonType { Null, Bool, Number, String, Array, Object };
 using jsonArray  = std::vector<Json>;                      // Json数据类型中的 Array
 using jsonObject = std::unordered_map<std::string, Json>;  // Json数据类型中的 Object
 
-/* 变体类型, json对象的类型就是其中之一*/
+/* 变体类型, json对象的值类型就是其中之一*/
 using type = std::variant<std::nullptr_t, bool, double, std::string, jsonArray, jsonObject>;
 
 class Json {
@@ -59,8 +61,6 @@ public:
     ~Json() = default;
 
 public:
-    static Json parseAPI(const std::string& content, std::string& errMsg);
-
     std::string serialize() const;
 
     JsonType getType() const;

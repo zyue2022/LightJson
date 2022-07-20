@@ -1,7 +1,7 @@
 /*
  * @Description  : 字符串解析类，返回解析字符串后得到的Json对象
  * @Date         : 2022-07-19 14:48:31
- * @LastEditTime : 2022-07-20 20:07:17
+ * @LastEditTime : 2022-07-20 21:16:31
  */
 #ifndef JSON_PARSE_H
 #define JSON_PARSE_H
@@ -35,11 +35,9 @@ public:
 
     Json parseJson();
 
-    /* 外部调用接口，静态 */
-    // static Json parseAPI(const std::string& content, std::string& errMsg);
-
 private:
     Json parseValue();
+
     Json parseLiteral(const std::string& literal);
     Json parseNumber();
     Json parseString();

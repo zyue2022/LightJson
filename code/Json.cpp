@@ -288,7 +288,7 @@ bool operator!=(const Json& lhs, const Json& rhs) { return !(lhs == rhs); }
  * @param {string&} errMsg
  * @return {Json}
  */
-Json Json::parseAPI(const std::string& content, std::string& errMsg) {
+Json JSON_API(const std::string& content, std::string& errMsg) {
     try {
         JsonParser p(content);
         return p.parseJson();
